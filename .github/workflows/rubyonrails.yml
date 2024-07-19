@@ -4,20 +4,20 @@ jobs:
   test:
     runs-on: ubuntu-latest
     services:
-      postgres:s
+      postgres:
         image: postgres:13-alpine
         ports:
           - "5432:5432"
         env:
           POSTGRES_PORT: 5432
           POSTGRES_HOST: postgres
-          POSTGRES_DB: carestore_mtrs_test
+          POSTGRES_DB: carstore_mtrs_test
           POSTGRES_HOST_AUTH_METHOD: trust
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: ""
     env:
       RAILS_ENV: test
-      DATABASE_URL: "postgres://postgres:@localhost:5432/carestore_mtrs_test"
+      DATABASE_URL: "postgres://postgres:@localhost:5432/carstore_mtrs_test"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
