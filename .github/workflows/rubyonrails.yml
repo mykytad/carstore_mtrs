@@ -18,14 +18,23 @@ jobs:
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://postgres:@localhost:5432/carstore_mtrs_test"
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
-      # Add or replace dependency steps here
-      - name: Install Ruby and gems
-        uses: ruby/setup-ruby@v1.138.0 # ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
-        with:
-          bundler-cache: true
+      #   uses: actions/checkout@v4
+      # # Add or replace dependency steps here
+      # - name: Install Ruby and gems
+      #   uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
+      #   with:
+      #     bundler-cache: true
+      steps:
+        - uses: actions/checkout@v4
+        - uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
+          with:
+            ruby-version: '3.1' # Not needed with a .ruby-version file
+        - run: bundle install
+        - run: bundle exec rake
+
       - name: Set up database schema
         run: bin/rails db:create
 
