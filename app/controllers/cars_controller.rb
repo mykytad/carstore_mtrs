@@ -4,11 +4,11 @@ class CarsController < ApplicationController
   def index
     @cars = Car.all
 
-    render json: @cars, only: [:make, :model, :body_type, :mileage, :color, :price, :fuel, :year, :engine_volume, :photo,]
+    render json: @cars, only: [:make, :model, :body_type, :mileage, :transmission, :color, :price, :fuel, :year, :engine_volume, :photo,]
   end
 
   def show
-    render json: @car, only: [:make, :model, :body_type, :mileage, :color, :price, :fuel, :year, :engine_volume, :photo,]
+    render json: @car, only: [:make, :model, :body_type, :mileage, :transmission, :color, :price, :fuel, :year, :engine_volume, :photo,]
   end
 
   def new
@@ -43,7 +43,6 @@ class CarsController < ApplicationController
       @car = Car.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def car_params
       params.require(:car).permit(:make, :model, :body_type, :mileage, :color, :price, :fuel, :year, :engine_volume, :transmission)
     end
