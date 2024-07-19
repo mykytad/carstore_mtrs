@@ -4,15 +4,11 @@ class CarsController < ApplicationController
   def index
     @cars = Car.all
 
-    render json: @cars, only: [:make, :model, :body_type, :mileage, :transmission, :color, :price, :fuel, :year, :engine_volume, :photo,]
+    render json: @cars, except: [:created_at, :updated_at, :status]
   end
 
   def show
-    render json: @car, only: [:make, :model, :body_type, :mileage, :transmission, :color, :price, :fuel, :year, :engine_volume, :photo,]
-  end
-
-  def new
-    @car = Car.new
+    render json: @car, except: [:created_at, :updated_at, :status]
   end
 
   def create
@@ -35,6 +31,7 @@ class CarsController < ApplicationController
 
   def destroy
     @car.destroy
+    render json: @car
   end
 
   private

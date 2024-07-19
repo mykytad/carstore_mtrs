@@ -12,7 +12,7 @@ class CreateCars < ActiveRecord::Migration[7.0]
       t.string :engine_volume,    null: false
       t.string :transmission,     null: false
       t.string :status,           null: false, default: "pending"
-      t.string :photo,            # null: false
+      t.string :photo             # null: false
  
       t.timestamps
     end

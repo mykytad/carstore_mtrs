@@ -26,10 +26,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_17_105532) do
     t.string "engine_volume", null: false
     t.string "transmission", null: false
     t.string "status", default: "pending", null: false
+    t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "photo"
-    t.string "#<ActiveRecord::ConnectionAdapters::PostgreSQL::TableDefinition"
   end
 
 end
