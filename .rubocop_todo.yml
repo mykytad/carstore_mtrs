@@ -227,3 +227,7 @@ Style/TrailingCommaInArrayLiteral:
 # URISchemes: http, https
 Layout/LineLength:
   Max: 198
+
+Style/BlockComments:
+  Exclude:
+    - 'spec/spec_helper.rb'
