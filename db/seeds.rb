@@ -6,6 +6,12 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 if Rails.env.development?
+  User.create(
+    email: "nikita@example.com",
+    phone: "0987654321",
+    password: "123456",
+    password_confirmation: "123456"
+  )
   Car.create!(
     make: "Mazda",
     model: "3",
@@ -17,7 +23,7 @@ if Rails.env.development?
     year: "2008",
     engine_volume: "1.5",
     transmission: "Automatic",
-    status: "pending"
+    user_id: 1
   )
   Car.create!(
     make: "Ford",
@@ -30,7 +36,7 @@ if Rails.env.development?
     year: "2012",
     engine_volume: "1.6",
     transmission: "Manual",
-    status: "pending"
+    user_id: 1
   )
   Car.create!(
     make: "Tesla",
@@ -43,6 +49,7 @@ if Rails.env.development?
     year: "2020",
     engine_volume: "-",
     transmission: "Automatic",
-    status: "pending"
+    user_id: 1
   )
+  puts "success"
 end

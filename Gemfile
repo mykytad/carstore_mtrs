@@ -34,7 +34,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem "rack-cors"
+gem "rack-cors"
 gem 'rubocop-rails', require: false
 gem "carrierwave"
 gem "mini_magick"
@@ -53,3 +53,4 @@ group :development do
 end
 
 gem "devise", "~> 4.9"
+gem "devise-api", "~> 0.1.3"
