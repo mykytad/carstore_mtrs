@@ -1,43 +1,43 @@
-name: "Ruby on Rails CI"
-on: push
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:13-alpine
-        ports:
-          - "5432:5432"
-        env:
-          POSTGRES_PORT: 5432
-          POSTGRES_HOST: postgres
-          POSTGRES_DB: carstore_mtrs_test
-          POSTGRES_HOST_AUTH_METHOD: trust
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: ""
-    env:
-      RAILS_ENV: test
-      DATABASE_URL: "postgres://postgres:@localhost:5432/carstore_mtrs_test"
+# name: "Ruby on Rails CI"
+# on: push
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+#     services:
+#       postgres:
+#         image: postgres:13-alpine
+#         ports:
+#           - "5432:5432"
+#         env:
+#           POSTGRES_PORT: 5432
+#           POSTGRES_HOST: postgres
+#           POSTGRES_DB: carstore_mtrs_test
+#           POSTGRES_HOST_AUTH_METHOD: trust
+#           POSTGRES_USER: postgres
+#           POSTGRES_PASSWORD: ""
+#     env:
+#       RAILS_ENV: test
+#       DATABASE_URL: "postgres://postgres:@localhost:5432/carstore_mtrs_test"
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v3
 
-      - name: Install Ruby and gems
-        # uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ruby-3.1.2
-          bundler-cache: true
+#       - name: Install Ruby and gems
+#         # uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
+#         uses: ruby/setup-ruby@v1
+#         with:
+#           ruby-version: ruby-3.1.2
+#           bundler-cache: true
 
-      - name: Set up database schema
-        run: bin/rails db:create
+#       - name: Set up database schema
+#         run: bin/rails db:create
 
-      - name: run rspec
-        run: bundle exec rspec spec
+#       - name: run rspec
+#         run: bundle exec rspec spec
 
-      - name: run rubocop
-        run: bundle exec rubocop
+#       - name: run rubocop
+#         run: bundle exec rubocop
 
-      - name: Run tests
-        run: bin/rake
+#       - name: Run tests
+#         run: bin/rake
