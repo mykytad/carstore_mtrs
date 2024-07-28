@@ -1,8 +1,16 @@
 # require "rails_helper"
+# require "shared_methods"
 
 # RSpec.describe "Cars", type: :request do
 #   before do
-#     Car.create(
+#     # create_user_and_cars
+#     user = User.create(
+#       email: "foo@example.com",
+#       phone: "0987654321",
+#       password: "123456",
+#       password_confirmation: "123456"
+#     )
+#     Car.create!(
 #       make: "Mazda",
 #       model: "3",
 #       body_type: "Sedan",
@@ -13,9 +21,9 @@
 #       year: "2008",
 #       engine_volume: "1.5",
 #       transmission: "Automatic",
-#       status: "pending"
+#       user_id: user.id
 #     )
-#     Car.create(
+#      Car.create!(
 #       make: "Ford",
 #       model: "Focus",
 #       body_type: "Sedan",
@@ -26,9 +34,9 @@
 #       year: "2012",
 #       engine_volume: "1.6",
 #       transmission: "Manual",
-#       status: "pending"
+#       user_id: user.id
 #     )
-#     Car.create(
+#     Car.create!(
 #       make: "Tesla",
 #       model: "Model 3",
 #       body_type: "Sedan",
@@ -39,7 +47,7 @@
 #       year: "2020",
 #       engine_volume: "-",
 #       transmission: "Automatic",
-#       status: "pending"
+#       user_id: user.id
 #     )
 #   end
 
@@ -51,10 +59,11 @@
 #   end
 
 #   scenario "Get a car" do
-#     get "http://localhost:3000/cars/3"
+#     get "http://localhost:3000/cars/2"
+#     # get car_path("2")
 #     expect(response).to have_http_status(:success)
 #     car = JSON.parse(response.body)
-#     expect(json['make']).to eq("Tesla")
-#     expect(json["model"]).to eq("Model 3")
+#     expect(car["make"]).to eq("Ford")
+#     expect(car["model"]).to eq("Focus")
 #   end
 # end

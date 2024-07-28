@@ -36,7 +36,8 @@ if Rails.env.development?
     year: "2012",
     engine_volume: "1.6",
     transmission: "Manual",
-    user_id: user.id
+    user_id: user.id,
+    status: "rejected"
   )
   Car.create!(
     make: "Tesla",

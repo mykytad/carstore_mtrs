@@ -1,4 +1,5 @@
 class CarsController < ApplicationController
+  before_action :authenticate_user!, only: [ :create, :update, :destroy ]
   before_action :set_car, only: [ :show, :update, :destroy ]
 
   def index
@@ -13,6 +14,7 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.new(car_params)
+    @car.user_id = current_user.id
 
     if @car.save
       render json: @car, status: :created, location: @car
