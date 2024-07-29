@@ -78,5 +78,21 @@ if Rails.env.development?
     )
     car += 1
   end
+
+  AdminUser.create!(
+    email: 'admin@example.com',
+    password: 'password',
+    password_confirmation: 'password'
+  )
   puts "success"
+end
+
+if Rails.env.production?
+  AdminUser.create!(
+    name: 'Admin',
+    phone:'1020304050',
+    email: 'admin@example.com',
+    password: 'password',
+    password_confirmation: 'password'
+  )
 end
