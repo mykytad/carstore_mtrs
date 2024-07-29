@@ -7,7 +7,6 @@ class CurrentUserController < ApplicationController
 
   def user_cars
     @cars = Car.where(:user_id => current_user.id)
-    # @cars = Car.where(:status => params[:status])
 
     render json: @cars, except: [:created_at, :updated_at, :user_id]
   end
@@ -20,7 +19,6 @@ class CurrentUserController < ApplicationController
 
   def user_rejected_car
     @cars = Car.where(:user_id => current_user.id, :status => "rejected")
-    # @carc = Car.where(:status => params[:rejected])
 
     render json: @cars, except: [:created_at, :updated_at, :user_id]
   end
