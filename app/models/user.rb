@@ -1,10 +1,11 @@
 class User < ApplicationRecord
+  has_many :cars, :dependent => :destroy
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, 
          :recoverable, :rememberable, :validatable
   include Devise::JWT::RevocationStrategies::JTIMatcher
-  has_many :cars, :dependent => :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
