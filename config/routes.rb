@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
   root "cars#index"
 
   get "user", to: "current_user#index"
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
   controllers:{
     sessions: 'users/sessions',
     registrations: 'users/registrations'
-  }, 
+  },
   defaults: { format: :json }
 
   resources :cars, only: [ :show, :create, :update, :destroy ]
