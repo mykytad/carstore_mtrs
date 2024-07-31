@@ -35,9 +35,12 @@ gem "bootsnap", require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem "rack-cors"
-gem 'rubocop-rails', require: false
+gem "rubocop-rails", require: false
 gem "carrierwave"
 gem "mini_magick"
+gem "activeadmin"
+gem "sass-rails"
+gem "sprockets-rails", :require => "sprockets/railtie"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

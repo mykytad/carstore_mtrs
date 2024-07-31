@@ -23,6 +23,18 @@ if Rails.env.development?
     u += 1
   end
 
+  pending = Status.create!(
+    name: "pending"
+  )
+
+  approved = Status.create!(
+    name: "approved"
+  )
+
+  rejected = Status.create!(
+    name: "rejected"
+  )
+
   car = 0
   while car < 4
     Car.create!(
@@ -36,7 +48,8 @@ if Rails.env.development?
       year: "2008",
       engine_volume: "1.5",
       transmission: "Automatic",
-      user_id: my_user.id
+      user_id: my_user.id,
+      status_id: pending.id
     )
     car += 1
   end
@@ -55,7 +68,7 @@ if Rails.env.development?
       engine_volume: "1.5",
       transmission: "Automatic",
       user_id: my_user.id,
-      status: "approved"
+      status_id: approved.id
     )
     car += 1
   end
@@ -74,9 +87,35 @@ if Rails.env.development?
       engine_volume: "1.5",
       transmission: "Automatic",
       user_id: my_user.id,
-      status: "rejected"
+      status_id: rejected.id
     )
     car += 1
   end
+
+  AdminUser.create!(
+    email: 'admin@example.com',
+    password: 'password',
+    password_confirmation: 'password'
+  )
   puts "success"
+end
+
+if Rails.env.production?
+  Statuc.create!(
+    name: "pending"
+  )
+  Statuc.create!(
+    name: "approved"
+  )
+  Statuc.create!(
+    name: "rejected"
+  )
+
+  AdminUser.create!(
+    name: 'Admin',
+    phone:'1020304050',
+    email: 'admin@example.com',
+    password: 'password',
+    password_confirmation: 'password'
+  )
 end
